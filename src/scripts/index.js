@@ -1,4 +1,7 @@
-import { flow, orderBy, take, map, partial } from "lodash/fp";
+import flow from "lodash/fp/flow";
+import orderBy from "lodash/fp/orderBy";
+import take from "lodash/fp/take";
+import map from "lodash/fp/map";
 
 const players = [
   { player: "Aleksandar Mitrovic", goals: 10, shots: 118 },
