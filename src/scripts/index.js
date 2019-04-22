@@ -1,4 +1,6 @@
-import { chain } from "lodash-es";
+import _ from "lodash-es";
+
+const { chain } = _;
 
 const players = [
   { player: "Aleksandar Mitrovic", goals: 10, shots: 118 },
