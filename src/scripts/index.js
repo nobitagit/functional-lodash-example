@@ -1,4 +1,4 @@
-import { map, orderBy, take } from "lodash-es";
+import { chain } from "lodash-es";
 
 const players = [
   { player: "Aleksandar Mitrovic", goals: 10, shots: 118 },
@@ -15,9 +15,11 @@ const players = [
 
 // Sort players by goals scored and shots taken.
 // If 2 players have the same number of goals, the one player
-// with less shots on targets is raknked higher.
-const sorted = orderBy(players, ["goals", "shots"], ["desc", "asc"]);
-const top3 = take(sorted, 3);
-const result = map(top3, "player");
+// with less shots on targets is ranked higher.
+const result = chain(players)
+  .orderBy(["goals", "shots"], ["desc", "asc"])
+  .take(3)
+  .map("player")
+  .value();
 
 console.log(result);
