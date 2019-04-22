@@ -1,4 +1,4 @@
-import { flow, orderBy, take, map, partial } from "lodash-es";
+import { flow, orderBy, take, map, partial } from "lodash/fp";
 
 const players = [
   { player: "Aleksandar Mitrovic", goals: 10, shots: 118 },
@@ -12,14 +12,13 @@ const players = [
   { player: "Gylfi Sigurdsson", goals: 12, shots: 78 },
   { player: "Sadio Manè", goals: 18, shots: 77 }
 ];
-const __ = partial.placeholder;
 // Sort players by goals scored and shots taken.
 // If 2 players have the same number of goals, the one player
 // with less shots on targets is ranked higher.
 const result = flow(
-  partial(orderBy, __, ["goals", "shots"], ["desc", "asc"]),
-  partial(take, __, 3),
-  partial(map, __, "player")
+  orderBy(["goals", "shots"], ["desc", "asc"]),
+  take(3),
+  map("player")
 )(players);
 
 console.log(result);
